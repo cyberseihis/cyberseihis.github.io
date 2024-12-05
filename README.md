@@ -1,6 +1,6 @@
 # Panagiotis Papanikolaou
 
-[CV/Resume](assets/CV_uwm.pdf) | [Email](mailto:panagip@umich.edu)
+[CV/Resume]([assets/CV_uwm.pdf](https://github.com/cyberseihis/cyberseihis.github.io/blob/main/assets/CV_uwm.pdf)) | [Email](mailto:panagip@umich.edu)
 
 ## About Me
 
