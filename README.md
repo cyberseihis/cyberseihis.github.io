@@ -1,6 +1,6 @@
 # Panagiotis Papanikolaou
 
-[CV/Resume](assets/CV.pdf) | [Email](mailto:panagip@umich.edu)
+[CV/Resume](assets/CV_uwm.pdf) | [Email](mailto:panagip@umich.edu)
 
 ## About Me
 
