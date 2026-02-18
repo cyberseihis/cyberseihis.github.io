@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panagiotis Papanikolaou</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f2eb;
+      --ink: #1a1714;
+      --muted: #6b6560;
+      --accent: #c0392b;
+      --rule: #d4cfc7;
+      --card: #edeae2;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-size: 13.5px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 32px 100px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-top: 3px solid var(--ink);
+      padding-top: 36px;
+      margin-bottom: 52px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+    }
+
+    .name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact {
+      font-size: 11.5px;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.9;
+    }
+
+    .contact a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .contact a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── SECTION ── */
+    section { margin-bottom: 48px; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+    }
+
+    /* ── INTERESTS ── */
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      padding: 4px 12px;
+      font-size: 12px;
+      border-radius: 2px;
+      color: var(--ink);
+    }
+
+    /* ── EDU / WORK ENTRIES ── */
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .entry-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.2;
+    }
+
+    .entry-sub {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .entry-date {
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+      text-align: right;
+    }
+
+    .entry-location {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    .bullets {
+      list-style: none;
+      margin-top: 8px;
+      grid-column: 1 / -1;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule);
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+    }
+
+    .pub:last-child { border-bottom: none; }
+
+    .pub-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--rule);
+      line-height: 1;
+      padding-top: 2px;
+      min-width: 28px;
+    }
+
+    .pub-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .pub-meta {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .pub-venue {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── PATENTS ── */
+    .patent {
+      font-size: 12.5px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .patent:last-child { border-bottom: none; }
+
+    .patent-status {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .patent-status.pending { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 16px;
+      margin-top: 60px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header  { animation: fadeUp .5s ease both; }
+    section { animation: fadeUp .5s ease both; }
+    section:nth-of-type(1) { animation-delay: .1s; }
+    section:nth-of-type(2) { animation-delay: .18s; }
+    section:nth-of-type(3) { animation-delay: .26s; }
+    section:nth-of-type(4) { animation-delay: .34s; }
+    section:nth-of-type(5) { animation-delay: .42s; }
+
+    @media (max-width: 560px) {
+      header { grid-template-columns: 1fr; }
+      .contact { text-align: left; }
+      .entry { grid-template-columns: 1fr; }
+      .entry-date, .entry-location { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <div class="name">Panagiotis<br><em>Papanikolaou</em></div>
+    </div>
+    <div class="contact">
+      <a href="/cdn-cgi/l/email-protection#7e0e0e1f0e1f10171511121f113e09170d1d501b1a0b"><span class="__cf_email__" data-cfemail="b0c0c0d1c0d1ded9dbdfdcd1dff0c7d9c3d39ed5d4c5">[email&#160;protected]</span></a><br>
+      PhD Candidate, ECE<br>
+      University of Wisconsin–Madison
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section style="margin-bottom: 40px;">
+    <p style="font-size: 13.5px; line-height: 1.85; max-width: 640px; color: var(--ink);">I'm a PhD student in Electrical and Computer Engineering at the University of Wisconsin–Madison, originally from Velo, Greece. I work in the <a href="https://www.georgetzimpragos.com" style="color: var(--ink); border-bottom: 1px solid var(--rule);" onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'" onmouseout="this.style.color='var(--ink)';this.style.borderColor='var(--rule)'">PCL group</a> under the supervision of George Tzimpragos. My research focuses on computer architecture for emerging hardware platforms — particularly superconducting computing — and on designing systems for ML inference under extreme resource constraints. I'm also interested in the EDA tools that support these efforts.</p>
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+  <section>
+    <div class="section-label">Research Interests</div>
+    <div class="interests">
+      <span class="tag">Architecture for emerging computing paradigms (superconducting, quantum)</span>
+      <span class="tag">Hardware design for ML inference under extreme resource constraints</span>
+      <span class="tag">Electronic Design Automation (EDA)</span>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <div class="section-label">Education</div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">PhD — Electrical &amp; Computer Engineering</div>
+        <div class="entry-sub">University of Wisconsin–Madison</div>
+      </div>
+      <div>
+        <div class="entry-date">Aug. 2025 – Present</div>
+        <div class="entry-location">Madison, WI</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">PhD — Computer Science &amp; Engineering</div>
+        <div class="entry-sub">University of Michigan</div>
+      </div>
+      <div>
+        <div class="entry-date">Sep. 2024 – Jul. 2025</div>
+        <div class="entry-location">Ann Arbor, MI</div>
+      </div>
+      <ul class="bullets">
+        <li>Quantum Research Institute Presidential Graduate Fellowship</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">BS/MS — Computer Engineering &amp; Informatics</div>
+        <div class="entry-sub">University of Patras</div>
+      </div>
+      <div>
+        <div class="entry-date">Oct. 2018 – Jul. 2023</div>
+        <div class="entry-location">Patras, GR</div>
+      </div>
+      <ul class="bullets">
+        <li>Graduated 2nd in cohort of ~200 students</li>
+        <li>Honor's thesis on architecture for ternary networks</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <div class="section-label">Work Experience</div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">Research Assistant</div>
+        <div class="entry-sub">CSE, University of Michigan</div>
+      </div>
+      <div>
+        <div class="entry-date">Apr. 2024 – Aug. 2024</div>
+        <div class="entry-location">Ann Arbor, MI</div>
+      </div>
+      <ul class="bullets">
+        <li>Architected superconducting hardware for scalable communication in quantum computing</li>
+        <li>Conducted systematic evaluation of superconducting memory architectures</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">Research Assistant</div>
+        <div class="entry-sub">ECE/CEID, University of Patras</div>
+      </div>
+      <div>
+        <div class="entry-date">Oct. 2023 – Mar. 2024</div>
+        <div class="entry-location">Patras, GR</div>
+      </div>
+      <ul class="bullets">
+        <li>Engineered high-throughput sensor–FPGA communication interfaces</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">Intern ML Engineer</div>
+        <div class="entry-sub">Irida Labs</div>
+      </div>
+      <div>
+        <div class="entry-date">Mar. 2023 – May 2023</div>
+        <div class="entry-location">Patras, GR</div>
+      </div>
+      <ul class="bullets">
+        <li>Developed computer vision models for automated industrial quality control</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section>
+    <div class="section-label">Publications</div>
+
+    <div class="pub">
+      <div class="pub-num">1</div>
+      <div>
+        <div class="pub-title">A Streaming Architecture for Quantum Error Syndrome Compression at 4 Kelvin</div>
+        <div class="pub-meta">P. Papanikolaou, R. Hou, J. Volk, G. Tzimpragos</div>
+        <span class="pub-venue">ISCA 2026 — Submitted</span>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-num">2</div>
+      <div>
+        <div class="pub-title">Duplication-Aware Retiming and Cell Interface Redesign for Superconductor Circuit Minimization</div>
+        <div class="pub-meta">P. Papanikolaou, A. Vanasse, H. Jin, G. Tzimpragos, J. Volk</div>
+        <span class="pub-venue">DAC 2026 — Submitted</span>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-num">3</div>
+      <div>
+        <div class="pub-title">Synthesis of Resource-Efficient Superconducting Circuits with Clock-Free Alternating Logic</div>
+        <div class="pub-meta">*J. Volk, *P. Papanikolaou, G. Zervakis, G. Tzimpragos &nbsp;·&nbsp; *Equal contribution</div>
+        <span class="pub-venue">DAC 2024</span>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-num">4</div>
+      <div>
+        <div class="pub-title">Evolutionary Approximation of Ternary Neurons for On-sensor Printed Neural Networks</div>
+        <div class="pub-meta">V. Mrazek, A. Kokkinis, P. Papanikolaou, Z. Vasicek, K. Siozios, G. Tzimpragos, M. Tahoori, G. Zervakis</div>
+        <span class="pub-venue">ICCAD 2024</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATENTS -->
+  <section>
+    <div class="section-label">Patents</div>
+
+    <div class="patent">
+      <span>Duplication-aware retiming for dual-rail circuits — P. Papanikolaou, G. Tzimpragos</span>
+      <span class="patent-status">In Preparation</span>
+    </div>
+
+    <div class="patent">
+      <span>System and method for lossless compression of quantum-error-syndrome data — P. Papanikolaou, G. Tzimpragos</span>
+      <span class="patent-status pending">Pending</span>
+    </div>
+
+    <div class="patent">
+      <span>Synthesis of Resource-Efficient Superconducting Circuits with Clock-Free Alternating Logic — J. Volk, P. Papanikolaou, G. Zervakis, G. Tzimpragos</span>
+      <span class="patent-status pending">Pending</span>
+    </div>
+  
